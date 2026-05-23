@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرتضى محسن | السيطرة على الأموال MCD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════ RESET & BASE ═══════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+/* ═══════════ VARIABLES ═══════════ */
+:root {
+  --orange: #F19C4A;
+  --orange-light: #F2C34B;
+  --red: #ff0c10;
+  --dark: #0a0a0a;
+  --dark2: #141414;
+  --dark3: #242424;
+  --gray-light: #c5c5c5;
+  --gray-mid: #878787;
+  --gray-dark: #555252;
+  --white: #ffffff;
+  --gradient-orange: linear-gradient(90deg, #f19c4a 0%, #f2c34b 100%);
+  --font: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+/* ═══════════ UTILITY ═══════════ */
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.text-center { text-align: center; }
+.text-orange { color: var(--orange); }
+
+/* ═══════════ HERO SECTION ═══════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(241,156,74,0.08) 0%, transparent 50%);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+@keyframes heroGlow {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-5%, 5%); }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 800px;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--gradient-orange);
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 28px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: rgba(241,188,63,0.5) 0 0 0 0; }
+  70% { box-shadow: rgba(241,188,63,0) 0 0 0 15px; }
+  100% { box-shadow: rgba(241,188,63,0) 0 0 0 0; }
+}
+.hero h1 {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ffffff, #f19c4a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h2 {
+  font-size: 22px;
+  font-weight: 400;
+  color: #c5c5c5;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.hero h2.highlight {
+  color: var(--orange);
+  font-weight: 600;
+}
+.hero .subtitle-gray {
+  font-size: 20px;
+  color: #878787;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* ═══════════ BUTTONS ═══════════ */
+.cta-btn {
+  display: inline-block;
+  background: var(--gradient-orange);
+  color: #0a0a0a;
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 700;
+  padding: 16px 48px;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  animation: pulse 2s infinite;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(241,156,74,0.4); }
+.cta-btn-red {
+  background: #ff0c10;
+  color: #fff;
+}
+
+/* ═══════════ COUNTDOWN ═══════════ */
+.countdown-bar {
+  background: var(--dark3);
+  padding: 30px 20px;
+  text-align: center;
+}
+.countdown-bar h3 { color: var(--orange); font-size: 20px; margin-bottom: 16px; }
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  direction: ltr;
+}
+.countdown-item {
+  background: var(--dark);
+  border: 1px solid var(--orange);
+  border-radius: 12px;
+  padding: 12px 20px;
+  min-width: 70px;
+}
+.countdown-item .num { font-size: 32px; font-weight: 700; color: var(--white); display: block; }
+.countdown-item .label { font-size: 12px; color: var(--gray-light); }
+
+/* ═══════════ SECTION COMMON ═══════════ */
+.section { padding: 80px 0; }
+.section-dark { background: var(--dark); }
+.section-darker { background: var(--dark2); }
+.section-gradient {
+  background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 50%, var(--dark) 100%);
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.section-title span { color: var(--orange); }
+.section-desc {
+  font-size: 20px;
+  color: var(--gray-light);
+  text-align: center;
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 0 auto 40px;
+}
+
+/* ═══════════ PAIN POINTS ═══════════ */
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+.pain-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--dark3);
+  border-radius: 16px;
+  padding: 20px 24px;
+  border-right: 4px solid var(--red);
+  transition: transform 0.3s;
+}
+.pain-item:hover { transform: translateX(-4px); }
+.pain-item .icon { font-size: 24px; flex-shrink: 0; }
+.pain-item p { font-size: 18px; color: var(--gray-light); line-height: 1.6; }
+
+/* ═══════════ MYTHS vs FACTS ═══════════ */
+.myths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+.myth-card {
+  background: linear-gradient(135deg, rgba(255,12,16,0.1), rgba(255,12,16,0.05));
+  border: 1px solid rgba(255,12,16,0.3);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+}
+.myth-card .x { color: var(--red); font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.myth-card p { font-size: 18px; color: var(--gray-light); line-height: 1.6; }
+
+/* ═══════════ THREE PILLARS ═══════════ */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 850px;
+  margin: 0 auto 50px;
+}
+.pillar-card {
+  background: var(--dark3);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid rgba(241,156,74,0.15);
+  transition: all 0.3s;
+}
+.pillar-card:hover { border-color: var(--orange); transform: translateY(-4px); }
+.pillar-icon { font-size: 40px; margin-bottom: 12px; }
+.pillar-card h3 { font-size: 20px; font-weight: 700; color: var(--orange); margin-bottom: 8px; }
+
+/* ═══════════ C5 SLIDER ═══════════ */
+.c5-section { padding: 80px 0; background: var(--dark2); }
+.c5-slider {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+.c5-slide {
+  display: none;
+  background: var(--dark3);
+  border-radius: 16px;
+  padding: 40px 30px;
+  border: 1px solid rgba(241,156,74,0.2);
+}
+.c5-slide.active { display: block; }
+.c5-slide .num {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--orange);
+  opacity: 0.3;
+  margin-bottom: 8px;
+}
+.c5-slide h3 { font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+.c5-slide p { font-size: 18px; color: var(--gray-light); line-height: 1.8; }
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.slider-btn {
+  background: var(--dark3);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.slider-btn:hover { background: var(--orange); color: var(--dark); }
+
+/* ═══════════ PHASES (MCD) ═══════════ */
+.phase-card {
+  background: var(--dark3);
+  border-radius: 16px;
+  padding: 40px 30px;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(241,156,74,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.phase-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--gradient-orange);
+}
+.phase-num {
+  display: inline-block;
+  background: var(--gradient-orange);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 18px;
+  border-radius: 50px;
+  margin-bottom: 16px;
+}
+.phase-card h3 { font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+.phase-card .phase-desc { font-size: 18px; color: var(--gray-light); line-height: 1.7; margin-bottom: 20px; }
+.phase-card ul { list-style: none; padding: 0; }
+.phase-card ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 18px;
+  color: var(--gray-light);
+  line-height: 1.6;
+}
+.phase-card ul li .check { color: var(--orange); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.phase-card .phase-note {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(241,156,74,0.08);
+  border-radius: 12px;
+  color: var(--orange);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+/* ═══════════ PRICING ═══════════ */
+.pricing-card {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--dark3);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  border: 2px solid var(--orange);
+  position: relative;
+  overflow: hidden;
+}
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px; height: 120px;
+  background: var(--gradient-orange);
+  opacity: 0.1;
+  border-radius: 0 0 0 120px;
+}
+.pricing-badge {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 20px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.pricing-card .price { font-size: 56px; font-weight: 700; color: var(--orange); }
+.pricing-card .price-old { font-size: 20px; color: var(--gray-mid); text-decoration: line-through; margin-bottom: 24px; }
+.pricing-card .features { list-style: none; padding: 0; margin-bottom: 30px; }
+.pricing-card .features li { padding: 10px 0; font-size: 18px; color: var(--gray-light); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.pricing-card .features li span { color: var(--orange); margin-left: 8px; }
+
+/* ═══════════ SUITABILITY ═══════════ */
+.suit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 850px;
+  margin: 0 auto 40px;
+}
+.suit-card {
+  background: var(--dark3);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(241,156,74,0.15);
+  transition: all 0.3s;
+}
+.suit-card:hover { border-color: var(--orange); }
+.suit-card .icon { font-size: 24px; margin-bottom: 8px; }
+.suit-card h4 { font-size: 17px; font-weight: 600; color: var(--white); line-height: 1.6; }
+
+/* ═══════════ ABOUT / TRAINER ═══════════ */
+.trainer-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--dark3);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  border: 1px solid rgba(241,156,74,0.15);
+}
+.trainer-card h3 { font-size: 28px; color: var(--orange); margin-bottom: 16px; }
+.trainer-card .bio { font-size: 18px; color: var(--gray-light); line-height: 1.8; margin-bottom: 24px; }
+.trainer-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.trainer-stat {
+  text-align: center;
+}
+.trainer-stat .num { font-size: 32px; font-weight: 700; color: var(--orange); display: block; }
+.trainer-stat .label { font-size: 14px; color: var(--gray-mid); }
+
+/* ═══════════ PRODUCTS SECTION ═══════════ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto 50px;
+}
+.product-card {
+  background: var(--dark3);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(241,156,74,0.15);
+  transition: all 0.4s;
+  position: relative;
+}
+.product-card:hover { transform: translateY(-6px); border-color: var(--orange); box-shadow: 0 16px 40px rgba(241,156,74,0.15); }
+.product-card .product-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--gradient-orange);
+  color: var(--dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 50px;
+  z-index: 2;
+}
+.product-card .product-tag.free { background: #37ca37; }
+.product-card .product-img {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  background: linear-gradient(135deg, var(--dark2), var(--dark3));
+}
+.product-card .product-body { padding: 28px 24px; }
+.product-card h3 { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.5; }
+.product-card p { font-size: 16px; color: var(--gray-light); line-height: 1.7; margin-bottom: 16px; }
+.product-card .product-price { font-size: 28px; font-weight: 700; color: var(--orange); margin-bottom: 16px; }
+.product-card .product-price small { font-size: 16px; color: var(--gray-mid); text-decoration: line-through; margin-right: 8px; font-weight: 400; }
+
+/* ═══════════ FOOTER ═══════════ */
+.footer {
+  background: var(--dark2);
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer p { font-size: 14px; color: var(--gray-mid); line-height: 1.8; }
+.footer a { color: var(--orange); text-decoration: none; }
+
+/* ═══════════ DIVIDER ═══════════ */
+.divider {
+  height: 2px;
+  background: var(--gradient-orange);
+  opacity: 0.3;
+  max-width: 200px;
+  margin: 0 auto 40px;
+}
+.ornament {
+  text-align: center;
+  font-size: 24px;
+  margin: 40px 0;
+  opacity: 0.5;
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 28px; }
+  .hero h2 { font-size: 18px; }
+  .section-title { font-size: 26px; }
+  .section-desc { font-size: 17px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .suit-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .cta-btn { font-size: 18px; padding: 14px 36px; }
+  .countdown-item .num { font-size: 26px; }
+  .trainer-stats { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">⏳ عدد تنازلي</div>
+    <h1>من الفوضى المالية… إلى السيطرة الكاملة</h1>
+    <h2>تخلّص من الفوضى المالية والضغط اليومي في بزنسك، من خلال نظام سيطرة مالية عملي يعيد ترتيب أموالك، وينقلك من التخبط وضياع الأموال إلى السيطرة الكاملة على مالك وقراراتك</h2>
+    <p class="subtitle-gray">⚠️ هذه الدورة ليست للجميع… بل لمن لديهم بزنس قائم وقرر كسر الدائرة المالية الحالية والانتقال من التعب إلى السيطرة</p>
+    <div style="margin: 30px 0; font-size: 22px; color: var(--orange); font-weight: 700;">
+      أكثر من 2000 متدرب ومتدربة ✅
+    </div>
+    <a href="#pricing" class="cta-btn">انضم الآن وابدأ التحكم الكامل في أموالك وبزنسك ←</a>
+  </div>
+</section>
+
+<!-- ═══════════ COUNTDOWN ═══════════ -->
+<div class="countdown-bar">
+  <h3>⏰ بعد انتهاء المؤقت يرتفع السعر</h3>
+  <div class="countdown" id="countdown">
+    <div class="countdown-item"><span class="num" id="hours">01</span><span class="label">ساعة</span></div>
+    <div class="countdown-item"><span class="num" id="minutes">59</span><span class="label">دقيقة</span></div>
+    <div class="countdown-item"><span class="num" id="seconds">59</span><span class="label">ثانية</span></div>
+  </div>
+</div>
+
+<!-- ═══════════ PAIN POINTS ═══════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title">لماذا تعمل أكثر... وتكسب أقل؟</h2>
+    <p class="section-desc">تبذل مجهود عالي وتعمل ساعات طويلة ولكن النتيجة لا تعكس المجهود الذي تبذله</p>
+    <div class="divider"></div>
+    <h2 class="section-title" style="font-size:24px;">أنت لست وحدك... والمشكلة ليست فيك</h2>
+    <p class="section-desc">إليك هذه الحقيقة:</p>
+    <h2 class="section-title"><span>الجهد وحده لا يصنع نموًا</span></h2>
+    <p class="section-desc">كثير من أصحاب المشاريع يعتقدون أن الحل هو:</p>
+    <div class="pain-grid">
+      <div class="pain-item"><span class="icon">😔</span><p>يشتغلون داخل البزنس أكثر مما يشتغلون على البزنس</p></div>
+      <div class="pain-item"><span class="icon">📉</span><p>يطاردون الأرقام بدل ما يقودونها</p></div>
+      <div class="pain-item"><span class="icon">😰</span><p>يتخذون قرارات مالية تحت ضغط لا تحت وعي</p></div>
+      <div class="pain-item"><span class="icon">❌</span><p>وما عندهم نظام واضح يضبط المال يوميًا</p></div>
+    </div>
+    <h2 class="section-title" style="color: var(--red);">وهنا يبدأ الاستنزاف الحقيقي…</h2>
+  </div>
+</section>
+
+<!-- ═══════════ MYTH BUSTING ═══════════ -->
+<section class="section section-darker">
+  <div class="container text-center">
+    <h2 class="section-title">💥 تحطيم المفاهيم</h2>
+    <p class="section-desc">أي بيزنس، مهما كان دخله، سيظل يدور في نفس الحلقة المفرغة ما لم تتبنى الركائز الثلاث الأساسية للنجاح المالي.</p>
+    <h3 style="font-size: 24px; color: var(--red); margin-bottom: 24px;">المعتقدات السائدة (الخاطئة)</h3>
+    <div class="myths-grid">
+      <div class="myth-card"><div class="x">✗</div><p>مجهود أكثر = أرباح أعلى دائماً</p></div>
+      <div class="myth-card"><div class="x">✗</div><p>مبيعات مرتفعة = استقرار مالي مضمون</p></div>
+      <div class="myth-card"><div class="x">✗</div><p>النمو السريع هو الحل الأكثر أماناً</p></div>
+    </div>
+    <div style="background: rgba(241,156,74,0.08); border-radius: 16px; padding: 24px; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 20px; color: var(--orange); font-weight: 600; line-height: 1.8; font-style: italic;">
+        "العمل بذكاء يبدأ من فهم الهيكل المالي الصحيح، وليس من مضاعفة ساعات العمل فقط."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THREE PILLARS ═══════════ -->
+<section class="section section-dark">
+  <div class="container text-center">
+    <h2 class="section-title">🏗️ الركائز الثلاث للتحول</h2>
+    <div class="pillars-grid">
+      <div class="pillar-card"><div class="pillar-icon">📋</div><h3>نظام واضح</h3></div>
+      <div class="pillar-card"><div class="pillar-icon">📊</div><h3>أرقام شفافة</h3></div>
+      <div class="pillar-card"><div class="pillar-icon">🔒</div><h3>سيطرة مالية</h3></div>
+    </div>
+    <h2 class="section-title" style="font-size: 28px;">🎯 تحكم في مستقبلك</h2>
+    <p class="section-desc">بدون هذه الركائز، ستظل تخاطر باستقرار مشروعك.</p>
+    <h2 class="section-title" style="font-size: 24px;">عشان كذا… الحل مو في زيادة العمل، بل في تغيير طريقة إدارتك للمال</h2>
+  </div>
+</section>
+
+<!-- ═══════════ PRODUCTS ═══════════ -->
+<section class="section section-gradient" id="products">
+  <div class="container">
+    <h2 class="section-title">📦 منتجات مرتضى محسن</h2>
+    <p class="section-desc">ولهذا السبب تحديدًا، وبعد سنوات من العمل والتجربة مع مئات من أصحاب المشاريع — تم تطوير منهجيات عملية متكاملة</p>
+    <div class="products-grid">
+
+      <!-- Product 1: MCD Course -->
+      <div class="product-card">
+        <span class="product-tag">الأكثر مبيعاً</span>
+        <div class="product-img">💰</div>
+        <div class="product-body">
+          <h3>السيطرة على الأموال MCD</h3>
+          <p>منهجية عملية مبنية على الواقع، تنقلك من مرحلة مطاردة الأرقام والتخبط المالي، إلى مرحلة قيادة أموالك وبزنسك بوعي ونظام واضح. خلال 6 أشهر و3 مراحل مترابطة.</p>
+          <div class="product-price"><small>197$</small>97$</div>
+          <ul style="list-style:none; padding:0; margin-bottom: 16px;">
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:var(--orange);">✓</span> المرحلة الأولى: السيطرة على المال</li>
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:var(--orange);">✓</span> المرحلة الثانية: بناء سيستم بزنس حقيقي</li>
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:var(--orange);">✓</span> المرحلة الثالثة: التوسع الذكي</li>
+          </ul>
+          <a href="https://lp.murtadhamuhsin.com/page-page" class="cta-btn" style="width: 100%; text-align: center; font-size: 16px; padding: 14px;">انضم الآن →</a>
+        </div>
+      </div>
+
+      <!-- Product 2: C5 Workshop -->
+      <div class="product-card">
+        <span class="product-tag free">مجاني</span>
+        <div class="product-img">🚀</div>
+        <div class="product-body">
+          <h3>ورشة معادلة C5 لمضاعفة الأرباح</h3>
+          <p>ورشة مجانية بالكامل تكشف لك خطوة بخطوة كيف تطبّق المعادلة السرية C5 لرفع أرباح مشروعك دون وقت أطول أو جهد أكبر.</p>
+          <div class="product-price" style="color: #37ca37;">مجاني 🎉</div>
+          <ul style="list-style:none; padding:0; margin-bottom: 16px;">
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:#37ca37;">✓</span> Concepts - المفاهيم المالية</li>
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:#37ca37;">✓</span> Control - التحكم والسيطرة</li>
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:#37ca37;">✓</span> Chase - التتبّع والملاحقة</li>
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:#37ca37;">✓</span> Cashflow Factory - مصنع التدفق المالي</li>
+            <li style="padding:4px 0; color: var(--gray-light); font-size:15px;"><span style="color:#37ca37;">✓</span> Cashflow Evolution - تطوّر التدفق المالي</li>
+          </ul>
+          <a href="https://lp.murtadhamuhsin.com/webinar-page" class="cta-btn" style="width: 100%; text-align: center; font-size: 16px; padding: 14px; background: #37ca37; color: #fff; animation: pulse 2s infinite;">سجّل في الورشة المجانية →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MCD PHASES ═══════════ -->
+<section class="section section-dark" id="mcd">
+  <div class="container">
+    <h2 class="section-title">كيف تعمل منهجية السيطرة المالية MCD</h2>
+    <p class="section-desc">هذه ليست معلومات متفرقة… بل مسار عملي واضح ينقلك خطوة بخطوة من الفوضى المالية إلى السيطرة الكاملة</p>
+    <div class="divider"></div>
+
+    <!-- Phase 1 -->
+    <div class="phase-card">
+      <span class="phase-num">المرحلة الأولى</span>
+      <h3>🧾 السيطرة على المال</h3>
+      <p class="phase-desc">في هذه المرحلة نبدأ من الأساس الصحيح… قبل التفكير في النمو أو التوسع</p>
+      <ul>
+        <li><span class="check">✓</span> ترى أرقامك بوضوح كامل</li>
+        <li><span class="check">✓</span> توقف النزيف المالي الصامت</li>
+        <li><span class="check">✓</span> تفصل مالك الشخصي عن مال البزنس</li>
+        <li><span class="check">✓</span> تتخذ قرارات مالية بهدوء بدل ضغط</li>
+      </ul>
+      <div class="phase-note">لأن الحقيقة البسيطة هي: بدون سيطرة مالية… أي نمو يتحول إلى عبء على البزنس</div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card">
+      <span class="phase-num">المرحلة الثانية</span>
+      <h3>⚙️ بناء سيستم بزنس حقيقي</h3>
+      <p class="phase-desc">بعد ما تصبح أموالك تحت السيطرة، ننتقل للخطوة التي تغيّر شكل عملك بالكامل</p>
+      <ul>
+        <li><span class="check">✓</span> تنظيم التشغيل اليومي بدون فوضى</li>
+        <li><span class="check">✓</span> توزيع الأدوار حتى لو كنت تعمل وحدك</li>
+        <li><span class="check">✓</span> قراءة الأرقام بدل التخمين</li>
+        <li><span class="check">✓</span> ضبط الربحية ومنع النزيف الخفي</li>
+      </ul>
+      <div class="phase-note">وهنا يبدأ الفرق الحقيقي بالظهور… ليس فقط في الأرقام، بل في الراحة الذهنية أيضًا</div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card">
+      <span class="phase-num">المرحلة الثالثة</span>
+      <h3>🚀 التوسع الذكي</h3>
+      <p class="phase-desc">الآن فقط… يصبح التوسع قرارًا آمنًا، وليس مغامرة قد تكلّفك الكثير</p>
+      <ul>
+        <li><span class="check">✓</span> تطوّر منتجاتك برؤية واضحة لا بعشوائية</li>
+        <li><span class="check">✓</span> تدير المخاطر قبل الخسائر</li>
+        <li><span class="check">✓</span> تبني مصادر دخل مستقرة</li>
+        <li><span class="check">✓</span> تنمّي أرباحك بخطوات محسوبة وثابتة</li>
+      </ul>
+      <div class="phase-note">لأن الهدف ليس النمو السريع… بل النمو المتزايد الدائم الذي يستمر</div>
+    </div>
+
+    <div class="ornament">──── ⬥ ────</div>
+    <h2 class="section-title" style="color: var(--orange);">تحول جذري في 6 أشهر</h2>
+    <p class="section-desc">في نهاية الأشهر الستة، لن تكون قد تعلّمت فقط معلومات جديدة...<br>بل ستكون قد انتقلت فعلياً من: <strong>مطاردة الأرقام...</strong> إلى <strong>قيادتها بثقة وسيطرة.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════════ C5 SYSTEM ═══════════ -->
+<section class="section section-darker" id="c5">
+  <div class="container text-center">
+    <h2 class="section-title">🔬 نظام C5 المتكامل للسيطرة المالية</h2>
+    <p class="section-desc">ماذا سوف تتعلم في ورشة معادلة C5 لمضاعفة أرباحك</p>
+    <div class="c5-slider" id="c5Slider">
+      <div class="c5-slide active" data-slide="0">
+        <div class="num">01</div>
+        <h3>Concepts - المفاهيم المالية</h3>
+        <p>ستتعرّف على المفاهيم المالية الخاطئة التي تجعل المال يهرب منك دون أن تشعر، وكيف تغيّر طريقة تفكيرك المالي لتصبح أكثر وعيًا. ستفهم لماذا 80% من أصحاب البزنس يديرون المال بالطريقة التي "يكرهها" المال.</p>
+      </div>
+      <div class="c5-slide" data-slide="1">
+        <div class="num">02</div>
+        <h3>Control - التحكم والسيطرة</h3>
+        <p>ستتعلّم كيف تفرض سيطرة واعية وبسيطة على أموالك، وتكشف بدقة أين تذهب. ستعرف كيف تطبّق آليات واضحة تمنع أي تسريب أو هدر، وتصبح أنت صاحب القرار في حركة المال لا تابعًا لها.</p>
+      </div>
+      <div class="c5-slide" data-slide="2">
+        <div class="num">03</div>
+        <h3>Chase - التتبّع والملاحقة</h3>
+        <p>ستعرف كيف تتبع حركة المال خطوة بخطوة، بحيث لا يتسرب منك سنت واحد دون معرفه. ستكتشف أين يتسرّب المال بصمت داخل مشروعك، وتتعلم نظام التتبّع الذي يكشف لك الصورة المالية الحقيقية.</p>
+      </div>
+      <div class="c5-slide" data-slide="3">
+        <div class="num">04</div>
+        <h3>Cashflow Factory - مصنع التدفق المالي</h3>
+        <p>ستتعلّم كيف يتحرّك المال داخل مشروعك بشكل عملي، وكيف تبني "مصنع تدفّق" يرفع أرباحك بشكل ثابت كل شهر. ستفهم الطريقة الصحيحة لتوزيع الأرباح، وتدير التدفق المالي بذكاء يجعلك تحصل على نتائج أكبر بجهد أقل.</p>
+      </div>
+      <div class="c5-slide" data-slide="4">
+        <div class="num">05</div>
+        <h3>Cashflow Evolution - تطوّر التدفق المالي</h3>
+        <p>ستتعلّم كيف تنقل مشروعك من مرحلة البقاء إلى مرحلة النمو المستدام الحقيقي. وكيف تطوّر تدفق الأرباح، وتوسّع عملك، وتخطط لتطور شهري مستمر. هذا الجزء يحوّل المعادلة من "حل مؤقت" إلى "نظام دائم ومستمر".</p>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="slider-btn" onclick="prevSlide()">→ السابق</button>
+      <button class="slider-btn" onclick="nextSlide()">← التالي</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ IS IT FOR YOU ═══════════ -->
+<section class="section section-dark">
+  <div class="container text-center">
+    <h2 class="section-title">هل هذا البرنامج مناسب لك؟</h2>
+    <p class="section-desc">هذا البرنامج ليس للجميع… بل صُمّم تحديدًا لفئة معيّنة تريد تغييرًا حقيقيًا لا مجرد معلومات إضافية.</p>
+    <div class="divider"></div>
+    <h3 style="font-size: 24px; color: var(--green, #37ca37); margin-bottom: 24px;">✅ البرنامج مناسب لك إذا كنت:</h3>
+    <div class="suit-grid" style="margin-bottom: 40px;">
+      <div class="suit-card"><div class="icon">🏢</div><h4>تمتلك مشروعًا أو محلًا تجاريًا وتعمل عليه فعليًا</h4></div>
+      <div class="suit-card"><div class="icon">💪</div><h4>تعمل بجهد كبير لكن أرباحك لا تعكس حجم تعبك</h4></div>
+      <div class="suit-card"><div class="icon">😶‍🌫️</div><h4>تشعر أن أموالك تتحرك بدون وضوح حقيقي</h4></div>
+      <div class="suit-card"><div class="icon">📉</div><h4>لديك ضغط مالي أو التزامات تريد الخروج منها</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT TRAINER ═══════════ -->
+<section class="section section-darker" id="about">
+  <div class="container text-center">
+    <h2 class="section-title">من مقدم هذه الدورة؟</h2>
+    <div class="trainer-card">
+      <h3>مرتضى محسن</h3>
+      <p class="bio">مهندس زراعي عراقي من مواليد 1992، انتقل إلى عالم التجارة بعد أن تعذّر حصوله على وظيفة رغم تفوقه الدراسي. بدأ عمله في محل لبيع إكسسوارات الهواتف ولكن...</p>
+      <div style="background: rgba(255,12,16,0.08); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+        <h4 style="color: var(--red); margin-bottom: 12px;">هنا واجه ضغوطًا مالية خانقة:</h4>
+        <p style="color: var(--gray-light); font-size: 16px; line-height: 2;">
+          😞 أرباح شهرية لا تتجاوز 300–400 دولار<br>
+          😞 ديون واجبة السداد وصلت إلى 3000 دولار<br>
+          😞 التزامات أسرية ومعيشية مرهقة<br>
+          😞 عمل يومي بلا توقف… لكن بدون نتائج
+        </p>
+      </div>
+      <p class="bio">وبعد سنوات من التجربة، والفشل، والمحاولات، وشراء عشرات الدورات — اكتشف "الشيء الذي غيّر حياته بالكامل"</p>
+      <div style="background: rgba(241,156,74,0.08); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+        <h4 style="color: var(--orange); margin-bottom: 8px;">المعادلة المالية C5</h4>
+        <p style="color: var(--gray-light);">المعادلة التي نقلتني من وضع الفوضى المالية إلى أرباح تتخطى 1000$ شهريا</p>
+      </div>
+      <div class="trainer-stats">
+        <div class="trainer-stat"><span class="num">+2000</span><span class="label">متدرب</span></div>
+        <div class="trainer-stat"><span class="num">$1000+</span><span class="label">شهرياً</span></div>
+        <div class="trainer-stat"><span class="num">C5</span><span class="label">منهجية</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRICING ═══════════ -->
+<section class="section section-dark" id="pricing">
+  <div class="container text-center">
+    <h2 class="section-title">الآن... جاء دورك</h2>
+    <p class="section-desc">ابدأ رحلة السيطرة على أموالك وبزنسك اليوم وانضم إلى مئات المحترفين الذين غيروا مسارهم المالي</p>
+    <div class="pricing-card">
+      <div class="pricing-badge">عرض لفترة محدودة</div>
+      <div class="price">$97</div>
+      <div class="price-old">بدلا من... 197$</div>
+      <ul class="features">
+        <li><span>✓</span> مرحلة السيطرة على المال</li>
+        <li><span>✓</span> مرحلة بناء سيستم بزنس حقيقي</li>
+        <li><span>✓</span> مرحلة التوسع الذكي</li>
+        <li><span>✓</span> منهجية MCD كاملة</li>
+        <li><span>✓</span> أكثر من 2000 متدرب</li>
+      </ul>
+      <a href="https://lp.murtadhamuhsin.com/page-page" class="cta-btn">انضم الآن وابدأ التحكم الكامل ←</a>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h3 style="font-size: 22px; color: #37ca37; margin-bottom: 16px;">🎯 أو ابدأ مجاناً بالورشة</h3>
+      <p style="color: var(--gray-light); font-size: 18px; margin-bottom: 24px;">سجّل في ورشة معادلة C5 المجانية واكتشف المعادلة السرية لمضاعفة أرباحك</p>
+      <a href="https://lp.murtadhamuhsin.com/webinar-page" class="cta-btn" style="background: #37ca37; animation: pulse 2s infinite;">سجّل في الورشة المجانية ←</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="container">
+    <p>سياسة الخصوصية | شروط الإستخدام | تواصل معنا</p>
+    <p style="margin-top: 8px;">جميع الحقوق محفوظة © 2025 مرتضى محسن</p>
+  </div>
+</footer>
+
+<script>
+// Countdown Timer
+function startCountdown() {
+  const now = new Date();
+  const end = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+  function update() {
+    const diff = end - new Date();
+    if (diff <= 0) { document.getElementById('hours').textContent = '00'; document.getElementById('minutes').textContent = '00'; document.getElementById('seconds').textContent = '00'; return; }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+  }
+  update();
+  setInterval(update, 1000);
+}
+startCountdown();
+
+// C5 Slider
+let currentSlide = 0;
+const slides = document.querySelectorAll('.c5-slide');
+function showSlide(n) {
+  slides.forEach(s => s.classList.remove('active'));
+  slides[n].classList.add('active');
+}
+function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+
+// Auto-play slider
+setInterval(nextSlide, 5000);
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>
